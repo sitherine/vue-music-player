@@ -5,9 +5,9 @@
   "author": "sitherine",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt --port=3002",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "start": "nuxt start --port=3002",
     "generate": "nuxt generate"
   },
   "dependencies": {
