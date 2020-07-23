@@ -1,4 +1,7 @@
-
+const webpack = require('webpack')
+// var argv = require('yargs').argv
+var appTarget = '2'
+// var appTarget = 'VERSION_A';
 export default {
   mode: 'universal',
   /*
@@ -23,30 +26,53 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/css/common.scss',
+    '@/assets/css/reset.scss'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+
   ],
   /*
   ** Nuxt.js dev-modules
   */
-  buildModules: [
-  ],
+  buildModules: [],
   /*
   ** Nuxt.js modules
   */
-  modules: [
-  ],
+  modules: [],
   /*
   ** Build configuration
   */
+
   build: {
     /*
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+      console.log(process.env)
+      config.plugins.push(
+        new webpack.NormalModuleReplacementPlugin(
+          /pages\/test\.json/,
+          './test2.json'
+        )
+      )
     }
   }
+  // build: {
+  //   plugins: [
+  //     new webpack.NormalModuleReplacementPlugin(
+  //       /pages\/test\.json/,
+  //       './test2.json'
+  //     )
+  //     // new webpack.NormalModuleReplacementPlugin(/(.*)-APP_TARGET(\.*)/, function(resource) {
+  //     //   resource.request = resource.request.replace(/-APP_TARGET/, `-${appTarget}`);
+  //     // })
+  //     // new webpack.NormalModuleReplacementPlugin(/(.*)test(\.*)/, function(resource) {
+  //     //   resource.request = resource.request.replace(/test/, `test${appTarget}`);
+  //     // })
+  //   ]
+  // }
 }
